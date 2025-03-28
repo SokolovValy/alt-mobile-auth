@@ -56,20 +56,22 @@ template $MobileAuthAdminDialog: Adw.Dialog {
 
           [bottom]
           Adw.Clamp {
-            margin-bottom: 12;
-            margin-top: 12;
-            margin-start: 12;
-            margin-end: 12;
-            maximum-size: 500;
+            margin-bottom: 8;
+            margin-top: 4;
+            margin-start: 72;
+            margin-end: 72;
+            maximum-size: 320;
 
-            Button auth_button {
-              styles [
-                "suggested-action",
-                "pill"
-              ]
+            ListBox {
+              styles ["boxed-list-separate"]
 
-              halign: center;
-              label: _("Authenticate");
+              selection-mode: none;
+
+              Adw.ButtonRow auth_button {
+                styles ["suggested-action"]
+
+                title: _("Authenticate");
+              }
             }
           }
         };

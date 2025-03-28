@@ -37,7 +37,7 @@ class AdminDialog(Adw.Dialog):
     username_entry:Adw.EntryRow = Gtk.Template.Child()
     password_entry:Adw.PasswordEntryRow = Gtk.Template.Child()
     gpo_checkbutton:Gtk.CheckButton = Gtk.Template.Child()
-    auth_button:Gtk.Button = Gtk.Template.Child()
+    auth_button:Adw.ButtonRow = Gtk.Template.Child()
 
     _domain = None
     _workgroup = None
@@ -50,7 +50,7 @@ class AdminDialog(Adw.Dialog):
         self._workgroup = workgroup
         self._host_name = host_name
 
-        self.auth_button.connect("clicked", self.on_auth)
+        self.auth_button.connect("activated", self.on_auth)
 
     def on_auth(self, button):
         admin_username = self.username_entry.props.text

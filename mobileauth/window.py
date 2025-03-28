@@ -36,7 +36,7 @@ class Window(Adw.ApplicationWindow):
     domain_entry:Adw.EntryRow = Gtk.Template.Child()
     workgroup_entry:Adw.EntryRow = Gtk.Template.Child()
     host_name_entry:Adw.EntryRow = Gtk.Template.Child()
-    submit_button:Gtk.Button = Gtk.Template.Child()
+    submit_button:Adw.ButtonRow = Gtk.Template.Child()
     clear_host_name_button:Gtk.Button = Gtk.Template.Child()
 
     def __init__(self, app):
@@ -47,7 +47,9 @@ class Window(Adw.ApplicationWindow):
         self.host_name_entry.connect("notify::text", self._on_entry_changed)
         self.host_name_entry.props.text = GLib.get_host_name()
 
-        self.submit_button.connect("clicked", self._on_submit)
+        self.clear_host_name_button.bind_property("visible", self.clear_host_name_button.get_parent (), "visible", GObject.BindingFlags.SYNC_CREATE)
+
+        self.submit_button.connect("activated", self._on_submit)
 
         self.clear_host_name_button.connect("clicked", self._on_clear_host_name)
 

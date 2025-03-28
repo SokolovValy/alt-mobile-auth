@@ -5,22 +5,31 @@ template $MobileAuthWelcomeDialog: Adw.Dialog {
   content-width: 300;
 
   Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar {
-      show-title: false;
-    }
-
-    content: Adw.StatusPage status_page {
-      icon-name: "emblem-ok-symbolic";
-
-      Button ok_button {
-        styles [
-          "pill",
-          "suggested-action"
-        ]
-
-        label: _("Ok");
+    content: WindowHandle {
+      Adw.StatusPage status_page {
+        icon-name: "emblem-ok-symbolic";
       }
     };
+
+    [bottom]
+    Adw.Clamp {
+      margin-bottom: 8;
+      margin-top: 4;
+      margin-start: 72;
+      margin-end: 72;
+      maximum-size: 320;
+
+      ListBox {
+        styles ["boxed-list-separate"]
+
+        selection-mode: none;
+
+        Adw.ButtonRow ok_button {
+          styles ["suggested-action"]
+
+          title: _("Ok");
+        }
+      }
+    }
   }
 }

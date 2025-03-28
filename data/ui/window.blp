@@ -7,31 +7,28 @@ template $MobileAuthWindow: Adw.ApplicationWindow {
   width-request: 360;
   height-request: 294;
 
-  Adw.ToastOverlay toast_overlay {
-    Adw.ToolbarView {
-      [top]
-      Adw.HeaderBar {
-        title-widget: Adw.WindowTitle {
-          title: _("Authentication");
-        };
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {
+        title: _("Authentication");
+      };
 
-        [end]
-        Button {
-          action-name: "win.about";
-          icon-name: "help-about-symbolic";
-        }
+      [end]
+      Button {
+        action-name: "win.about";
+        icon-name: "help-about-symbolic";
       }
+    }
 
-      content: Adw.StatusPage {
+    content: Adw.ToastOverlay toast_overlay {
+      Adw.StatusPage {
         icon-name: "io.github.SokolovValy.MobileAuth-symbolic";
         title: _("Application for entering the device into the domain");
         description: _("Enter the domain details, and then enter the administrator credentials.");
 
         Adw.Clamp {
-          margin-bottom: 12;
           margin-top: 12;
-          margin-start: 12;
-          margin-end: 12;
           maximum-size: 500;
 
           ListBox {
@@ -69,26 +66,30 @@ template $MobileAuthWindow: Adw.ApplicationWindow {
             }
           }
         }
-      };
+      }
+    };
 
-      [bottom]
-      Adw.Clamp {
-        margin-bottom: 12;
-        margin-top: 12;
-        margin-start: 12;
-        margin-end: 12;
-        maximum-size: 500;
+    [bottom]
+    Adw.Clamp {
+      margin-bottom: 8;
+      margin-top: 4;
+      margin-start: 72;
+      margin-end: 72;
+      maximum-size: 320;
 
-        Button submit_button {
-          styles [
-            "suggested-action",
-            "pill"
-          ]
+      ListBox {
+        styles ["boxed-list-separate"]
 
-          halign: center;
-          label: _("Submit");
+        selection-mode: none;
+
+        Adw.ButtonRow submit_button {
+          styles ["suggested-action"]
+
+          title: _("Submit");
         }
       }
     }
   }
+
+  
 }
